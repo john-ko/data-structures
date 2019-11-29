@@ -1,5 +1,4 @@
-
-class Node {
+export class Node {
   constructor (value) {
     this.data = value
     this.left = null
@@ -7,7 +6,7 @@ class Node {
   }
 }
 
-class BST {
+export default class BST {
   constructor () {
     this.root = null
   }
