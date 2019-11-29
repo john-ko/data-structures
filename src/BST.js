@@ -14,6 +14,7 @@ export default class BST {
   add (value) {
     if (!this.root) {
       this.root = new Node(value)
+
       return value
     }
 
