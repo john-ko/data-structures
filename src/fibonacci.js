@@ -20,19 +20,43 @@ export function fibonacciRecursive (n) {
     + fibonacciRecursive(n - 2)
 }
 
-const memoizationMap = new Map()
-memoizationMap.set(0, 1)
-memoizationMap.set(1, 1)
+const memozationArray = [0, 1, 1]
+export function fibonacciMemoization (n = 0) {
+  if (n <= 0) { return 0 }
 
-export function fibonacciMemoization (n) {
+  if (memozationArray[n]) {
+    return memozationArray[n]
+  }
+
+  const arrayDistance = n - memozationArray.length
+
+  for (let i = arrayDistance; i < n; i++) {
+    memozationArray[n] = memozationArray[n - 1]
+      + memozationArray[n - 2]
+  }
+
+  return memozationArray[n]
+}
+
+export function fibonacciIterative (n) {
   if (n <= 0) {
     return 0
   }
 
-  for (let i = 0; i < n; i++) {
-
+  if (n === 1) {
+    return 1
   }
 
-  // if (memoizationMap.get(n))
-  // return 0
+  let sum = 0
+  let nMinus1 = 0
+  let nMinus2 = 1
+
+  for (let i = 1; i < n; i++) {
+    sum = nMinus1 + nMinus2
+
+    nMinus1 = nMinus2
+    nMinus2 = sum
+  }
+
+  return sum
 }

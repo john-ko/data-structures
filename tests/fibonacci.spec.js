@@ -1,8 +1,9 @@
 import fibonacci from '@/src/fibonacci'
 
 import {
-  fibonacciRecursive,
+  fibonacciIterative,
   fibonacciMemoization,
+  fibonacciRecursive,
 } from '@/src/fibonacci'
 
 const sequences = [
@@ -23,8 +24,9 @@ const sequences = [
 ]
 
 describe('fibonacci', () => {
-  describe('fibonacci recursive', () => {
+  describe('recursive', () => {
     it('works', () => {
+      // take only 1st 10 since recursion is slow
       const fibonacciSequences = sequences.slice(0, 10)
 
       fibonacciSequences.forEach((sequence, index) => {
@@ -33,11 +35,33 @@ describe('fibonacci', () => {
     })
   })
 
-  describe('fibonacci - constant time', () => {
+  describe('constant time', () => {
     it('O(1) works until rounding error', () => {
       sequences.forEach((sequence, index) => {
         expect(fibonacci(index)).toBe(sequence)
       })
     })
+  })
+
+  describe('memoization', () => {
+    it('fibonacciIterative', () => {
+      sequences.forEach((sequence, index) => {
+        expect(fibonacciMemoization(index)).toBe(sequence)
+      })
+    })
+
+    it('should memoize it', () => {
+      const answer = 1304969544928657 + 2111485077978050
+      expect(fibonacciMemoization(76)).toBe(answer)
+    })
+  })
+
+  describe('iterative', () => {
+    expect(fibonacciIterative(0)).toBe(0)
+    expect(fibonacciIterative(1)).toBe(1)
+    expect(fibonacciIterative(2)).toBe(1)
+    expect(fibonacciIterative(3)).toBe(2)
+    expect(fibonacciIterative(4)).toBe(3)
+    expect(fibonacciIterative(5)).toBe(5)
   })
 })
