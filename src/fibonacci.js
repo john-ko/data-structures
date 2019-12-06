@@ -31,8 +31,8 @@ export function fibonacciMemoization (n = 0) {
   const arrayDistance = n - memozationArray.length
 
   for (let i = arrayDistance; i < n; i++) {
-    memozationArray[n] = memozationArray[n - 1]
-      + memozationArray[n - 2]
+    memozationArray[i] = memozationArray[i - 1]
+      + memozationArray[i - 2]
   }
 
   return memozationArray[n]
