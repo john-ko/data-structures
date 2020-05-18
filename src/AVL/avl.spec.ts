@@ -1,3 +1,9 @@
+/**
+ * usage for Deno
+ *
+ * $ deno test avl.spec.ts
+ */
+
 const { test } = Deno
 import { AVL } from './avl.ts'
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts'
@@ -16,9 +22,9 @@ test('right leaning tree', () => {
 
   const root = avl.getRoot()
 
+  // avl.print()
   assertEquals(root?.data, 4)
 
-  // avl.print()
 })
 
 test('left leaning tree', () => {
@@ -33,8 +39,8 @@ test('left leaning tree', () => {
 
   const root = avl.getRoot()
 
+  // avl.print()
   assertEquals(root?.data, 4)
-  avl.print()
 })
 
 test('compare', () => {
@@ -46,4 +52,32 @@ test('compare', () => {
   const results = compare(nodeA, nodeB)
 
   assertEquals(results, -1)
+})
+
+test('search with failure', () => {
+  const avl = new AVL.AVLTree()
+  avl.insert(17)
+  avl.insert(26)
+  avl.insert(13)
+  avl.insert(4)
+  avl.insert(15)
+  avl.insert(52)
+  avl.insert(21)
+
+  avl.print()
+  assertEquals(avl.find(3), false)
+})
+
+test('search with success', () => {
+  const avl = new AVL.AVLTree()
+  avl.insert(17)
+  avl.insert(26)
+  avl.insert(13)
+  avl.insert(4)
+  avl.insert(15)
+  avl.insert(52)
+  avl.insert(21)
+
+  // avl.print()
+  assertEquals(avl.find(21), 21)
 })

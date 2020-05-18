@@ -1,10 +1,25 @@
+/**
+ * AVL usage for deno
+ *
+ * import { AVL } from 'https://raw.githubusercontent.com/john-ko/data-structures/master/src/AVL/avl.ts'
+ *
+ * const avl = new AVL.AVLTree()
+ * avl.insert(1)
+ * avl.insert(2)
+ * avl.insert(3)
+ * avl.insert(4)
+ * avl.insert(5)
+ * avl.print()
+ *
+ * console.log(avl.find(3))
+ */
 export namespace AVL {
 
   /**
    * constructor options
    */
   interface Options {
-    compare?: () => number,
+    compare?: () => number | boolean,
   }
 
   export class Node {
@@ -22,8 +37,7 @@ export namespace AVL {
   }
 
   export class AVLTree {
-
-    public compare: (a: Node | null, b: Node | null) => number
+    public compare: (a: Node | null, b: Node | null) => number | boolean
     public count: number
     private root: Node | null
 
@@ -33,8 +47,12 @@ export namespace AVL {
       this.compare = options?.compare || AVLTree.defaultCompare
     }
 
-    static defaultCompare (a: Node | null, b: Node | null): number {
+    static defaultCompare (a: Node | null, b: Node | null): number | boolean {
       if (!a || !b) {
+        return false
+      }
+
+      if (a.data === b.data) {
         return 0
       }
 
@@ -43,6 +61,57 @@ export namespace AVL {
       }
 
       return 1
+    }
+
+    find (data: any): boolean | any {
+      if (!this.root) {
+        return false
+      }
+
+      const searchNode = new Node(data)
+
+      const found = this.search(this.root, searchNode)
+
+      // pretty much not found, return false
+      if (typeof found === 'boolean') {
+        return found
+      }
+
+      return found.data
+    }
+
+    remove (data: any): boolean {
+      return true
+    }
+
+    search (current: Node, searchNode: Node): Node | boolean {
+      const compare = this.compare(searchNode, current)
+
+      // one or both nodes are null
+      if (compare === false) {
+        return false
+      }
+
+      // found the node!
+      if (compare === 0) {
+        return current
+      }
+
+      // recurse
+      if (compare === 1) {
+        // go right
+        if (current.right) {
+          return this.search(current.right, searchNode)
+        }
+      } else {
+        // go left
+        if (current.left) {
+          return this.search(current.left, searchNode)
+        }
+      }
+
+      // not found
+      return false
     }
 
     insert (data: any): Node | null {
