@@ -4,8 +4,11 @@
  * $ deno test avl.spec.ts
  */
 
+ // @ts-ignore
 const { test } = Deno
+// @ts-ignore
 import { AVL } from './avl.ts'
+// @ts-ignore
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts'
 
 // const AVLTree = new AVL.AVLTree()

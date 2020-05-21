@@ -1,6 +1,12 @@
 # Datastructures
 mainly playing around with datastructures, algorithms, and unit tests
 
+## AVL tree
+- written in typescript and uses deno
+
+## LinkedList
+- written in typescript and uses deno
+
 ## BST
 - todo finish up
 

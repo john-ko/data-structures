@@ -4,8 +4,11 @@
  * $ deno test avl.spec.ts
  */
 
+ // @ts-ignore
 const { test } = Deno
+// @ts-ignore
 import { LinkedList } from './LinkedList.ts'
+// @ts-ignore
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts'
 
 

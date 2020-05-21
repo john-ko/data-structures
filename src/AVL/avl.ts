@@ -28,7 +28,7 @@ export namespace AVL {
     public right: Node | null
     public height: number
 
-    constructor (data?: any) {
+    constructor (data?: unknown) {
       this.data = data
       this.left = null
       this.right = null
@@ -50,6 +50,10 @@ export namespace AVL {
     static defaultCompare (a: Node | null, b: Node | null): number | boolean {
       if (!a || !b) {
         return false
+      }
+
+      if (typeof a.data !== 'number' || typeof b.data !== 'number') {
+        throw new Error('defaultCompare only compares numbers')
       }
 
       if (a.data === b.data) {
