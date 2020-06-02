@@ -1,9 +1,14 @@
+/**
+ * testing:
+ * $ deno test ./findFirstNDayOfMonth.ts
+ */
+
 // @ts-ignore
 const { test } = Deno
 // @ts-ignore
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts'
 
-enum DAY {
+export enum DAY {
   SUNDAY,
   MONDAY,
   TUESDAY,
@@ -30,15 +35,14 @@ export function dayOfMonth (ordinal: number, day: DAY, month: number, year: numb
   const date = new Date(year, month - 1)
   const days = []
   const startDay = date.getDay() // 5 = friday
-  let delta = day - startDay
+  let delta = day - startDay + 1
 
-  if (delta < 0) {
+  if (delta < 1) {
     delta += 7
   }
 
   for (let i = 0; i < ordinal; i++) {
-    delta = i * 7 + delta
-    date.setDate(delta + 1)
+    date.setDate(i * 7 + delta)
 
     if (date.getMonth() === (month - 1)) {
       days.push(date.getDate())
@@ -48,10 +52,16 @@ export function dayOfMonth (ordinal: number, day: DAY, month: number, year: numb
   return days[days.length - 1]
 }
 
-test('find the 3rd sunday of march 2020', () => {
-  assertEquals(dayOfMonth(3, DAY.SUNDAY, 3, 2020), 22)
+test('find the 4th sunday of march 2020', () => {
+  const day = dayOfMonth(4, DAY.SUNDAY, 3, 2020)
+  assertEquals(day, 22)
 })
 
 test('find thanksgiving 2020', () => {
   assertEquals(dayOfMonth(5, DAY.THURSDAY, 11, 2020), 26)
+})
+
+test('checking 0 based days', () => {
+  const day = dayOfMonth(3, DAY.SUNDAY, 11, 2020)
+  assertEquals(day, 15)
 })
