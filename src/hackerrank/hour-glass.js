@@ -26,8 +26,22 @@
 
 // Complete the hourglassSum function below.
 function hourglassSum(arr) {
+  // 0 - 5
+  let max = null
 
+  for (let i = 0; i < arr.length - 2; i++) {
+    for(let j = 0; j < arr[i].length - 2; j++) {
+      const sum = sumHourglass(arr, i, j)
 
+      if (max === null) {
+        max = sum
+      } else if (sum > max) {
+        max = sum
+      }
+    }
+  }
+
+  return max
 }
 
 function arrSum (array) {
