@@ -75,6 +75,16 @@ describe('linked-list', () => {
         expect(linkedList.head?.data).toBe(2)
         expect(linkedList.head?.next?.data).toBe(3)
       })
+
+      it('reduces the length', () => {
+        const linkedList: LinkedList = new LinkedList()
+        linkedList.add(1)
+        linkedList.add(2)
+        linkedList.add(3)
+        expect(linkedList.length).toBe(3)
+        expect(linkedList.shift()).toBe(1)
+        expect(linkedList.length).toBe(2)
+      })
     })
 
     describe('find', () => {

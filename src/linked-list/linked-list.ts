@@ -97,6 +97,7 @@ export class LinkedList {
 
     const current = this.head
     this.head = current.next
+    this.length--
 
     return current.data
   }
