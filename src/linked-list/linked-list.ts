@@ -18,6 +18,14 @@ export class LinkedList {
     this.comparator = comparator ?? ((a: number, b: number) => a === b)
   }
 
+  addToFront (data: any) {
+    const node: Node = new Node(data)
+    node.next = this.head
+    this.head = node
+
+    return data
+  }
+
   add (data: any): any {
     const node: Node = new Node(data)
     let current = this.head

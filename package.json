@@ -1,10 +1,10 @@
 {
-  "name": "datastructures",
+  "name": "data-structures",
   "version": "1.0.0",
   "description": "",
   "main": "",
   "scripts": {
-    "test": "jest src/"
+    "test": "jest --maxWorkers=4 src/"
   },
   "author": "",
   "license": "ISC",
