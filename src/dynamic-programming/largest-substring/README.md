@@ -13,3 +13,4 @@ str2 = 'BAPPLE'
 | L |  0 | 0 | 0 |  1 | 0 |
 | E |  0 | 0 | 0 |  0 | 1 |
 
+returns the largest diagonal which is [A, P, P, L, E]
