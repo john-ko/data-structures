@@ -9,8 +9,10 @@ export function lis (numbers: number[]): number[][] {
 
     for (let i = 0; i < lists.length; i++) {
       const group = lists[i]
+
       for (let j = group.length - 1; j > -1; j--) {
         const num = lists[i][j]
+
         if (number < num) {
           group.push(number)
           return

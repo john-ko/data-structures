@@ -8,4 +8,12 @@ describe('largest-subsequence', () => {
 
     expect(largest).toEqual(['A','P','P','L','E'])
   })
+
+  it('works with `passport` and `ppsspt`', () => {
+    const sequence1 = 'passport'
+    const sequence2 = 'ppsspt'
+    const largest = largestSubstring(sequence1, sequence2)
+
+    expect(largest).toEqual(['s', 's', 'p'])
+  })
 })
