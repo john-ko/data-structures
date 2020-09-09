@@ -1,11 +1,11 @@
 # fibonacci
 
 ## fibonacci
-- O(1)
+- ![formula](<img src="https://render.githubusercontent.com/render/math?math=O(1)">)
 - issue due to rounding error
 
 ## fibonacciRecursive
-- O(n^2)
+- ![formula](<img src="https://render.githubusercontent.com/render/math?math=O(n^2)">)
 
 ## fibonacciMemoize
-- O(n)
+- ![formula](<img src="https://render.githubusercontent.com/render/math?math=O(n)">)
