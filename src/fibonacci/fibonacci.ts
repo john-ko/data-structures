@@ -1,6 +1,11 @@
+// golden ratio phi 1.618033988749895 (truncated)
+const ф = 1.61803398874989484820458683436563811
+// square root 5    2.23606797749979 (truncated)
+const sqrt5 = 2.2360679774997896964091736687312762
 
-export function fibonacci (num: number): number {
-  return 0
+
+export function fibonacci (n: number): number {
+  return Math.round(Math.pow(ф, n) / sqrt5)
 }
 
 /**
@@ -27,9 +32,8 @@ let memoized = [0, 1]
  * @param num {number}
  */
 export function fibonacciMemoize (num: number): number {
-  const index: number = num - 1
-  if (memoized[index]) {
-    return memoized[index]
+  if (memoized[num] !== undefined) {
+    return memoized[num]
   }
 
   // work up until that num
