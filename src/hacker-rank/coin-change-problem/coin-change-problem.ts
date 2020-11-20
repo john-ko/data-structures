@@ -1,28 +1,21 @@
 export default function getWays (n: number, c: number[]): number {
+  const results = new Set<string>()
+  recursiveWay(n, c, [], results)
 
-  return 0
+  return results.size
 }
 
-function makeABucket (coins: number[]): Map<number, number> {
-  return new Map(coins.map((coin) => [coin, 0]))
-}
-
-function recursiveWay (n: number, c: number[], results: string) {
-  console.log(' n ', n)
+export function recursiveWay (n: number, c: number[], current: number[], results: Set<string>) {
   if (n < 0) {
     return
   }
 
   if (n === 0) {
-    // found it! now what lol?
-    console.log(' found 1', results)
-
+    results.add(current.sort().toString())
+    return
   }
 
   for (let num of c) {
-    console.log(n, num)
-    recursiveWay(n - num, c, `${results},${num}`)
+    recursiveWay(n - num, c, [...current, num], results)
   }
 }
-
-recursiveWay(10, [2, 5, 3, 6], '')
