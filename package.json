@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "jest --maxWorkers=4 src/"
+    "test": "jest --maxWorkers=6 src/"
   },
   "author": "",
   "license": "ISC",
