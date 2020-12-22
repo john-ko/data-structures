@@ -28,3 +28,32 @@ export function lis (numbers: number[]): number[][] {
 
   return lists
 }
+
+// [4, 2, 5, 8, 1]
+// [4]
+// [1, 2]
+export function lisRecursive(numbers: number[], current?: number): number {
+  if (numbers.length < 0) {
+    return 0
+  }
+
+  if (numbers.length === 1) {
+    return 1
+  }
+
+  if (current === undefined) {
+    current = numbers[0]
+  }
+
+  for (let num of numbers) {
+    if (num > current) {
+      
+    }
+  }
+
+
+  return 0
+}
+
+console.log(lisRecursive([4]))
+console.log(lisRecursive([4, 2]))
