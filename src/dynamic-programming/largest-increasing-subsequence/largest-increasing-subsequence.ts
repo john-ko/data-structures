@@ -47,13 +47,10 @@ export function lisRecursive(numbers: number[], current?: number): number {
 
   for (let num of numbers) {
     if (num > current) {
-      
+
     }
   }
 
 
   return 0
 }
-
-console.log(lisRecursive([4]))
-console.log(lisRecursive([4, 2]))
