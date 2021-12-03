@@ -7,6 +7,14 @@ describe('stalin sort', () => {
         1, 2, 3, 4, 5, 6
       ])
     })
+
+    it('works with the main use case in the readme', () => {
+      const goons = [1,2,5,3,5,7]
+
+      expect(stalin_sort(goons)).toEqual(
+        [1,2,5,5,7]
+      )
+    })
   })
 
   describe('send_to_gulag', () => {
