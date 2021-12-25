@@ -1,14 +1,15 @@
-export class Node {
+export class Node<T = any> {
   public data: any
-  public next: Node | null
+  public next: Node<T> | null
 
   constructor (data: any) {
     this.data = data
     this.next = null
   }
 }
-export class LinkedList {
-  public head: Node | null
+
+export class LinkedList<G = any> {
+  public head: Node<G> | null
   public length: number
   private comparator: (a: any, b: any) => boolean
 
@@ -18,7 +19,7 @@ export class LinkedList {
     this.comparator = comparator ?? ((a: number, b: number) => a === b)
   }
 
-  addToFront (data: any) {
+  addToFront (data: G) {
     const node: Node = new Node(data)
     node.next = this.head
     this.head = node
@@ -26,7 +27,7 @@ export class LinkedList {
     return data
   }
 
-  add (data: any): any {
+  add (data: G): G {
     const node: Node = new Node(data)
     let current = this.head
     this.length++
@@ -45,7 +46,7 @@ export class LinkedList {
     return data
   }
 
-  find (data: any): any {
+  find (data: any): G | undefined {
     let current = this.head
 
     if (!current) {
@@ -90,7 +91,7 @@ export class LinkedList {
     return false
   }
 
-  shift (): any {
+  shift (): G | undefined {
     if (!this.head) {
       return undefined
     }

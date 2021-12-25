@@ -1,17 +1,17 @@
 import { LinkedList } from '../linked-list/linked-list'
 
-export class Queue {
-  queue: LinkedList
+export class Queue<T> {
+  queue: LinkedList<T>
 
   constructor () {
-    this.queue = new LinkedList()
+    this.queue = new LinkedList<T>()
   }
 
-  enqueue (item: any): any {
+  enqueue (item: any): T {
     return this.queue.add(item)
   }
 
-  dequeue (): any | undefined {
+  dequeue (): T | undefined {
     return this.queue.shift()
   }
 
@@ -19,7 +19,7 @@ export class Queue {
     return this.queue.length === 0
   }
 
-  peek (): any | undefined {
+  peek (): T | undefined {
     return this.queue.head?.data
   }
 }
