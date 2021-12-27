@@ -1,5 +1,5 @@
 
-export function merge_interval (intervals: number[][]): number[][] {
+export function merge (intervals: number[][]): number[][] {
   intervals.sort((a: number[],b: number[]) => a[0] < b[0] ? -1: 1)
   return intervals.reduce((acc: number[][], interval) => {
     let previous = acc[acc.length - 1]
@@ -16,11 +16,15 @@ export function merge_interval (intervals: number[][]): number[][] {
     // sp      s
     // [0,5], [1,4]
     // if one in range
-    if ((start >= start_previous && start <= stop_previous) || 
-        (stop <= stop_previous && stop >= start_previous) || 
-        (start <= start_previous && stop >= stop_previous) ||
-        (start >= start_previous && stop <= stop_previous)
-      ) {
+    if (
+      // start is within range of previous
+      (start >= start_previous && start <= stop_previous) || 
+      // stop is within range of previous
+      (stop <= stop_previous && stop >= start_previous) || 
+      // this wont happen since it is sorted by start
+      // (start <= start_previous && stop >= stop_previous) ||
+      (start >= start_previous && stop <= stop_previous)
+    ) {
       // mutate last one and return
       previous[0] = Math.min(start, start_previous)
       previous[1] = Math.max(stop, stop_previous)
@@ -37,9 +41,3 @@ export function merge_interval (intervals: number[][]): number[][] {
     return acc
   }, [])
 }
-
-
-const test = [[1,4],[0,1]]
-
-console.log(merge_interval(test))
-// console.log(merge_interval([[0,0],[1,4]]))
