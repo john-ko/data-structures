@@ -64,5 +64,3 @@ export function get_clean_bucket (): number[][] {
     [], // 9
   ]
 }
-
-console.log(bucket_sort([300,20,1]))

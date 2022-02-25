@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "jest src/ --runInBand"
+    "test": "jest src/"
   },
   "author": "",
   "license": "ISC",

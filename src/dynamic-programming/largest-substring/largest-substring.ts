@@ -42,3 +42,35 @@ export function checkDiagonal (array: boolean[][], i: number, j: number, str: st
 
   return letters
 }
+
+export function largestSubstringV2 (a: string, b: string) {
+  const matrix: number[][] = []
+  const max = {
+    size: 0,
+    pos: {
+      i: 0,
+      j: 0,
+    }
+  }
+
+  for (let i = 0; i < a.length; i++) {
+    let subMatrix: number[] = []
+    for (let j = 0; j < b.length; j++) {
+      let additional = 0
+      if (a[i] === b[j]) {
+        additional = (matrix[i - 1]?.[j - 1] ?? 0) + 1
+      }
+      subMatrix[j] = additional
+
+      // max check
+      if (subMatrix[j] > max.size) {
+        max.size = subMatrix[j]
+        max.pos.i = i
+        max.pos.j = j
+      }
+    }
+    matrix.push(subMatrix)
+  }
+
+  return max
+}
