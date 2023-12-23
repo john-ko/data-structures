@@ -11,8 +11,12 @@ export class HashMap<K extends unknown, V extends unknown> {
   private items: [K, V][] = []
   private ratio = 0.7
   private current_size = 0
-  constructor() {
+  constructor(configuration?: { ratio: number }) {
     this.items = new Array(10)
+
+    if (configuration?.ratio) {
+      this.ratio = configuration.ratio
+    }
   }
 
   set(key: K, value: V): V {
@@ -47,12 +51,12 @@ export class HashMap<K extends unknown, V extends unknown> {
     return 5 % this.size
   }
 
-  private calucate_ratio(): number {
+  private calculate_ratio(): number {
     return this.current_size / this.size
   }
 
   private need_resize() {
-    if (this.calucate_ratio() > this.ratio) {
+    if (this.calculate_ratio() > this.ratio) {
       this.rehash()
     }
   }
